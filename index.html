@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>機器學習特徵選取演算法評估與迴歸分析儀表板 (DIC-2)</title>
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <!-- Chart.js CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+  <!-- PapaParse for CSV URL Parsing -->
+  <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="dark-theme">
+  <!-- Ambient Background Lights -->
+  <div class="ambient-glow glow-1"></div>
+  <div class="ambient-glow glow-2"></div>
+  <div class="ambient-glow glow-3"></div>
+
+  <header class="app-header">
+    <div class="header-inner">
+      <div class="brand">
+        <div class="brand-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
+          </svg>
+        </div>
+        <div>
+          <h1 class="brand-title">迴歸分析與特徵漸進選擇系統</h1>
+          <p class="brand-subtitle">IoT Data Analytics Lab (DIC-2: 50 Startups & Boston Housing)</p>
+        </div>
+      </div>
+
+      <!-- Problem Dropdown & Bonus Badges -->
+      <div class="header-controls">
+        <div class="problem-select-wrapper">
+          <label class="header-select-label" for="problem-selector">
+            <span class="badge-dot"></span>
+            題目切換 (加分項 1):
+          </label>
+          <select id="problem-selector" class="problem-dropdown">
+            <option value="50_startups">📊 題目一：50 Startups (新創獲利預測)</option>
+            <option value="boston_housing">🏡 題目二：Boston Housing (波士頓房價預測)</option>
+          </select>
+        </div>
+
+        <button class="custom-loader-toggle-btn" id="btn-toggle-custom-loader">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+          自訂 URL (加分項 2)
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Custom Dataset URL Loader Modal / Collapsible Section (加分項 2) -->
+  <section class="custom-dataset-banner" id="custom-dataset-section" style="display: none;">
+    <div class="custom-dataset-inner glass-card">
+      <div class="custom-header-row">
+        <div>
+          <h3 class="custom-title">
+            <span class="badge badge-purple">加分項 2 專區</span>
+            任意輸入 Dataset URL 載入並即時分析
+          </h3>
+          <p class="custom-desc">支援任何公開 CSV 網址（例如 GitHub Raw、Kaggle 原始檔）。系統將自動解析特徵並執行特徵選取與回歸指標計算！</p>
+        </div>
+        <button class="close-custom-btn" id="btn-close-custom">&times;</button>
+      </div>
+
+      <div class="custom-input-group">
+        <input type="text" id="input-dataset-url" class="custom-url-input" 
+               placeholder="輸入 Raw CSV 網址..." 
+               value="https://raw.githubusercontent.com/Avik-Jain/100-Days-Of-ML-Code/master/datasets/50_Startups.csv">
+        <button class="btn-analyze-url" id="btn-fetch-dataset">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+          載入並執行特徵選取
+        </button>
+      </div>
+
+      <div class="quick-links-row">
+        <span class="quick-label">快速填入範例：</span>
+        <button class="quick-fill-btn" data-url="https://raw.githubusercontent.com/Avik-Jain/100-Days-Of-ML-Code/master/datasets/50_Startups.csv">
+          老師示範: Avik-Jain 50_Startups.csv
+        </button>
+        <button class="quick-fill-btn" data-url="https://raw.githubusercontent.com/selva86/datasets/master/BostonHousing.csv">
+          BostonHousing.csv (13 Features)
+        </button>
+      </div>
+
+      <div id="custom-dataset-status" class="custom-status-text"></div>
+    </div>
+  </section>
+
+  <main class="dashboard-container">
+    <!-- Top Executive Summary Banner -->
+    <section class="executive-banner glass-card">
+      <div class="banner-content">
+        <div class="banner-tagline">
+          <span class="pulse-dot"></span>
+          <span id="banner-problem-tag">50 Startups 新創資料集分析 (CRISP-DM Standard)</span>
+        </div>
+        <h2 class="banner-heading" id="banner-heading-text">5 大機器學習特徵選取演算法漸進式評估</h2>
+        <p class="banner-description" id="banner-desc-text">
+          本系統評估 <strong>Lasso (L1 正則排序)</strong>、<strong>Forward SFS (前向逐步挑選)</strong>、<strong>RFE (遞迴消除)</strong>、<strong>ElasticNet</strong> 與 <strong>Exhaustive Search (窮舉最佳子集)</strong> 對多元線性迴歸模型之影響。透過偏差與方差權衡 (Bias-Variance Tradeoff)，實證檢驗
+          <strong class="text-emerald" id="desc-sweet-spot-text">2-Feature 最佳泛化甜蜜點 (Sweet Spot)</strong> 與 <strong class="text-amber">全特徵過擬合懸崖 (Overfitting Cliff)</strong>。
+        </p>
+        <div class="banner-highlights">
+          <div class="highlight-item">
+            <span class="hl-label">最佳特徵配置 (Sweet Spot)</span>
+            <span class="hl-val text-emerald" id="hl-sweet-features">R&D Spend + Marketing Spend</span>
+          </div>
+          <div class="highlight-item">
+            <span class="hl-label">最低測試集 RMSE</span>
+            <span class="hl-val text-emerald" id="hl-sweet-rmse">$8,198.80 (Lowest Error)</span>
+          </div>
+          <div class="highlight-item">
+            <span class="hl-label">最高解釋力 (R²)</span>
+            <span class="hl-val text-cyan" id="hl-sweet-r2">0.9474 (94.74%)</span>
+          </div>
+          <div class="highlight-item">
+            <span class="hl-label">總樣本數與特徵</span>
+            <span class="hl-val text-purple" id="hl-sample-stats">50 Samples | 5 Features</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Interactive Navigation Tabs -->
+    <nav class="nav-tabs">
+      <button class="tab-btn active" data-tab="tab-model-explorer">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
+        模型互動探索器
+      </button>
+      <button class="tab-btn" data-tab="tab-chart-analysis">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg>
+        動態特徵曲線對比
+      </button>
+      <button class="tab-btn" data-tab="tab-profit-simulator">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M16 8h-6a2 2 0 1 0 0 4h4a2 2 0 1 1 0 4H8"></path><line x1="12" y1="6" x2="12" y2="8"></line><line x1="12" y1="16" x2="12" y2="18"></line></svg>
+        即時目標值預測模擬器
+      </button>
+      <button class="tab-btn" data-tab="tab-matrix-summary">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+        演算法綜合對比矩陣
+      </button>
+    </nav>
+
+    <!-- TAB 1: Model Explorer -->
+    <div id="tab-model-explorer" class="tab-content active">
+      <!-- Controls Bar -->
+      <section class="control-panel glass-card">
+        <div class="control-group">
+          <label class="control-label">
+            <span class="step-num">1</span> 選擇特徵挑選演算法 (Algorithm)
+          </label>
+          <div class="btn-group" id="algo-btn-group">
+            <button class="algo-pill active" data-algo="Lasso (L1 Ranking)">
+              <span class="pill-dot" style="background: #06b6d4;"></span>
+              Lasso (L1 Ranking)
+              <span class="pill-tag">L1 Regularized</span>
+            </button>
+            <button class="algo-pill" data-algo="Forward SFS">
+              <span class="pill-dot" style="background: #f59e0b;"></span>
+              Forward SFS
+              <span class="pill-tag">Greedy Forward</span>
+            </button>
+            <button class="algo-pill" data-algo="RFE">
+              <span class="pill-dot" style="background: #10b981;"></span>
+              RFE
+              <span class="pill-tag">Recursive Elimination</span>
+            </button>
+            <button class="algo-pill" data-algo="ElasticNet Ranking">
+              <span class="pill-dot" style="background: #ec4899;"></span>
+              ElasticNet Ranking
+              <span class="pill-tag">L1 + L2 Hybrid</span>
+            </button>
+            <button class="algo-pill" data-algo="Exhaustive Search">
+              <span class="pill-dot" style="background: #8b5cf6;"></span>
+              Exhaustive Search
+              <span class="pill-tag">Best Subset</span>
+            </button>
+          </div>
+        </div>
+
+        <div class="control-group" style="margin-top: 1.5rem;">
+          <label class="control-label">
+            <span class="step-num">2</span> 選擇特徵數量 (Number of Features: k)
+          </label>
+          <div class="k-selector-group" id="k-btn-group">
+            <!-- Dynamically generated based on dataset's max_k -->
+          </div>
+        </div>
+      </section>
+
+      <!-- KPI Metric Cards Grid -->
+      <section class="kpi-grid">
+        <div class="kpi-card glass-card" id="card-rmse">
+          <div class="kpi-header">
+            <span class="kpi-name">測試集 RMSE (Root Mean Squared Error)</span>
+            <span class="kpi-badge" id="kpi-rmse-badge">最佳甜蜜點</span>
+          </div>
+          <div class="kpi-value" id="val-test-rmse">$8,198.80</div>
+          <div class="kpi-subtext" id="val-test-rmse-sub">均方根誤差越小越好 (全演算法中最低)</div>
+          <div class="kpi-bar-wrapper">
+            <div class="kpi-bar" id="bar-rmse" style="width: 25%;"></div>
+          </div>
+        </div>
+
+        <div class="kpi-card glass-card">
+          <div class="kpi-header">
+            <span class="kpi-name">決定係數 R² (Coefficient of Determination)</span>
+            <span class="kpi-badge badge-cyan" id="kpi-r2-badge">94.74% 擬合</span>
+          </div>
+          <div class="kpi-value text-cyan" id="val-test-r2">0.9474</div>
+          <div class="kpi-subtext" id="val-test-r2-sub">解釋目標變數變異量之 94.74%</div>
+          <div class="kpi-bar-wrapper">
+            <div class="kpi-bar bg-cyan" id="bar-r2" style="width: 94.7%;"></div>
+          </div>
+        </div>
+
+        <div class="kpi-card glass-card">
+          <div class="kpi-header">
+            <span class="kpi-name">校正決定係數 Adjusted R²</span>
+            <span class="kpi-badge badge-purple">懲罰冗餘參數</span>
+          </div>
+          <div class="kpi-value text-purple" id="val-adj-r2">0.9324</div>
+          <div class="kpi-subtext">校正自由度後之真實解釋力</div>
+          <div class="kpi-bar-wrapper">
+            <div class="kpi-bar bg-purple" id="bar-adj-r2" style="width: 93.2%;"></div>
+          </div>
+        </div>
+
+        <div class="kpi-card glass-card">
+          <div class="kpi-header">
+            <span class="kpi-name">平均絕對誤差 MAE</span>
+            <span class="kpi-badge badge-orange">平均預測偏差</span>
+          </div>
+          <div class="kpi-value text-orange" id="val-test-mae">$6,886.59</div>
+          <div class="kpi-subtext">平均預測誤差絕對值</div>
+          <div class="kpi-bar-wrapper">
+            <div class="kpi-bar bg-orange" id="bar-mae" style="width: 35%;"></div>
+          </div>
+        </div>
+
+        <div class="kpi-card glass-card">
+          <div class="kpi-header">
+            <span class="kpi-name">F-檢定統計量 (F-Statistic)</span>
+            <span class="kpi-badge badge-emerald" id="val-p-badge">p &lt; 0.0001</span>
+          </div>
+          <div class="kpi-value text-emerald" id="val-f-stat">349.00</div>
+          <div class="kpi-subtext">模型具備極高統計顯著性 (p &lt; 0.0001)</div>
+          <div class="kpi-bar-wrapper">
+            <div class="kpi-bar bg-emerald" style="width: 90%;"></div>
+          </div>
+        </div>
+
+        <div class="kpi-card glass-card">
+          <div class="kpi-header">
+            <span class="kpi-name">訓練集 vs 測試集 泛化差距</span>
+            <span class="kpi-badge" id="val-gap-badge">良好泛化</span>
+          </div>
+          <div class="kpi-value" id="val-generalization-gap">-$879.82</div>
+          <div class="kpi-subtext" id="val-gap-sub">Test RMSE 比 Train RMSE 表現更佳</div>
+          <div class="kpi-bar-wrapper">
+            <div class="kpi-bar bg-emerald" id="bar-gap" style="width: 85%;"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Model Detail Section -->
+      <section class="detail-grid">
+        <!-- Active Predictors & Regression Formula -->
+        <div class="glass-card detail-panel">
+          <h3 class="panel-title">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
+            當前選取特徵組合與線性迴歸方程式
+          </h3>
+          <div class="features-chip-container" id="features-chips">
+            <!-- Dynamically populated -->
+          </div>
+
+          <div class="formula-box">
+            <div class="formula-label">回歸預測模型公式 (Empirical Regression Formula):</div>
+            <code class="formula-code" id="formula-display">
+              <!-- Dynamically populated -->
+            </code>
+          </div>
+
+          <div class="coefficients-table-wrap">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>變數名稱 (Variable)</th>
+                  <th>迴歸係數 (β Weight)</th>
+                  <th>特徵說明</th>
+                  <th>邊際貢獻方向</th>
+                </tr>
+              </thead>
+              <tbody id="coef-table-body">
+                <!-- Dynamically populated -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Analytical Insights & Occam's Razor -->
+        <div class="glass-card detail-panel">
+          <h3 class="panel-title">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+            資料科學洞見與簡約原則 (Occam's Razor)
+          </h3>
+          <div class="insight-cards-stack" id="insight-stack">
+            <!-- Dynamically updated based on dataset -->
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- TAB 2: Dynamic Chart Analysis -->
+    <div id="tab-chart-analysis" class="tab-content">
+      <div class="glass-card chart-container-card">
+        <div class="chart-header">
+          <div>
+            <h3 class="panel-title">5 大特徵選取演算法之特徵數量曲線比較</h3>
+            <p class="panel-subtitle">即時可視化不同演算法在不同特徵數量時之表現趨勢</p>
+          </div>
+          <div class="chart-toggles">
+            <button class="chart-toggle-btn active" id="btn-show-rmse">檢視 RMSE 曲線 (越低越好)</button>
+            <button class="chart-toggle-btn" id="btn-show-r2">檢視 R² 解釋力曲線 (越高越好)</button>
+          </div>
+        </div>
+
+        <div class="chart-canvas-wrapper">
+          <canvas id="progressionChart"></canvas>
+        </div>
+
+        <div class="chart-legend-custom">
+          <div class="leg-item"><span class="leg-dot" style="background: #06b6d4;"></span> Lasso (L1 Ranking)</div>
+          <div class="leg-item"><span class="leg-dot" style="background: #f59e0b;"></span> Forward SFS</div>
+          <div class="leg-item"><span class="leg-dot" style="background: #10b981;"></span> RFE</div>
+          <div class="leg-item"><span class="leg-dot" style="background: #ec4899;"></span> ElasticNet Ranking</div>
+          <div class="leg-item"><span class="leg-dot" style="background: #8b5cf6;"></span> Exhaustive Search</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TAB 3: Profit / Target Prediction Simulator -->
+    <div id="tab-profit-simulator" class="tab-content">
+      <div class="grid-simulator">
+        <div class="glass-card sim-card">
+          <h3 class="panel-title">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
+            自變數輸入與即時模擬 (Interactive Predictor Inputs)
+          </h3>
+          <p class="panel-subtitle" id="sim-subtitle">調整變數數值，即時觀察當前選取之迴歸模型推論結果</p>
+
+          <div id="sim-sliders-container">
+            <!-- Dynamically populated based on active dataset features -->
+          </div>
+        </div>
+
+        <div class="glass-card sim-card">
+          <h3 class="panel-title">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+            目標值即時預測與模型差異比對
+          </h3>
+          <p class="panel-subtitle">比對最佳甜蜜點模型 (Sweet Spot) 與全模型 (Full Model) 之預測結果</p>
+
+          <div class="sim-result-box bg-emerald-dim">
+            <div class="sim-res-badge" id="sim-sweet-badge">★ 最佳簡約模型預測 (Sweet Spot)</div>
+            <div class="sim-res-val text-emerald" id="pred-k2">$132,615.86</div>
+            <div class="sim-res-meta" id="sim-sweet-meta">採用最佳簡約特徵組合</div>
+          </div>
+
+          <div class="sim-result-box bg-amber-dim" style="margin-top: 1rem;">
+            <div class="sim-res-badge" id="sim-full-badge">⚠ 全特徵模型預測 (Full Model)</div>
+            <div class="sim-res-val text-amber" id="pred-k5">$130,528.12</div>
+            <div class="sim-res-meta" id="sim-full-meta">包含全部特徵變數</div>
+          </div>
+
+          <div class="sim-diff-box">
+            <div class="sim-diff-label">模型預測差異額 (Difference):</div>
+            <div class="sim-diff-val" id="pred-diff">+$2,087.74</div>
+            <div class="sim-diff-note">
+              差額來自於次要特徵或噪音變數所引入的係數波動。簡約模型具備更穩健的外插與泛化可靠性。
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TAB 4: Algorithm Matrix Summary -->
+    <div id="tab-matrix-summary" class="tab-content">
+      <div class="glass-card table-panel">
+        <div class="table-header-row">
+          <div>
+            <h3 class="panel-title">5 大演算法所有特徵階數完整對照數據矩陣</h3>
+            <p class="panel-subtitle">包含各演算法每階段挑選之特徵、Test RMSE、R²、Adjusted R² 與 MAE</p>
+          </div>
+          <button class="download-csv-btn" id="btn-export-csv">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+            匯出特徵選取比較表 (CSV)
+          </button>
+        </div>
+
+        <div class="table-responsive">
+          <table class="data-table matrix-table">
+            <thead>
+              <tr>
+                <th>特徵選取演算法</th>
+                <th>特徵數 (k)</th>
+                <th>選入之特徵組合 (Selected Features)</th>
+                <th>Test RMSE</th>
+                <th>Test R²</th>
+                <th>Adjusted R²</th>
+                <th>Test MAE</th>
+                <th>評價等級</th>
+              </tr>
+            </thead>
+            <tbody id="matrix-table-body">
+              <!-- Dynamically populated -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="app-footer">
+    <div class="footer-inner">
+      <div>
+        <strong>物聯網數據分析與應用 (IoT Data Analysis) - DIC-2 作業報告</strong>
+        <p>涵蓋 50 Startups 與 Boston Housing 雙主題 | 支援任意自訂 Dataset URL 動態分析</p>
+      </div>
+      <div class="footer-meta">
+        <span class="badge badge-emerald">加分項 1 (雙問題切換): 已完成</span>
+        <span class="badge badge-purple">加分項 2 (任意 Dataset URL): 已完成</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="model_data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

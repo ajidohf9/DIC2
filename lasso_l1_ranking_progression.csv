@@ -1,0 +1,6 @@
+Number_of_Features,Selected_Features,Test_RMSE,Test_R2,Adjusted_R2,Test_MAE,F_Statistic,Train_RMSE,Train_R2
+1,R&D Spend,8274.87,0.9465,0.9398,6772.45,141.42,9493.58,0.945
+2,R&D Spend + Marketing Spend,8198.8,0.9474,0.9324,6886.59,63.09,9078.62,0.9497
+3,R&D Spend + Marketing Spend + Administration,8803.78,0.9394,0.9091,7320.44,31.0,9052.27,0.95
+4,R&D Spend + Marketing Spend + Administration + State_Florida,9068.54,0.9357,0.8843,7431.47,18.19,9036.51,0.9501
+5,R&D Spend + Marketing Spend + Administration + State_Florida + State_New York,9137.99,0.9347,0.8531,7514.29,11.45,9031.67,0.9502

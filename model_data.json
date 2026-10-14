@@ -1,0 +1,2587 @@
+{
+  "50_startups": {
+    "name": "50 Startups (Kaggle)",
+    "target_col": "Profit",
+    "total_samples": 50,
+    "train_samples": 40,
+    "test_samples": 10,
+    "features_all": [
+      "R&D Spend",
+      "Administration",
+      "Marketing Spend",
+      "State_Florida",
+      "State_New York"
+    ],
+    "max_k": 5,
+    "sweet_spot_k": 2,
+    "sweet_spot_features": [
+      "R&D Spend",
+      "Marketing Spend"
+    ],
+    "sweet_spot_rmse": 8198.8,
+    "sweet_spot_r2": 0.9474,
+    "methods_data": {
+      "Lasso (L1 Ranking)": [
+        {
+          "k": 1,
+          "features": [
+            "R&D Spend"
+          ],
+          "test_rmse": 8274.87,
+          "test_r2": 0.9465,
+          "adjusted_r2": 0.9398,
+          "test_mae": 6772.45,
+          "train_rmse": 9493.58,
+          "train_r2": 0.945,
+          "f_statistic": 141.42,
+          "p_value": "2.30e-06",
+          "intercept": 48416.3,
+          "coefficients": {
+            "R&D Spend": 0.8516
+          }
+        },
+        {
+          "k": 2,
+          "features": [
+            "R&D Spend",
+            "Marketing Spend"
+          ],
+          "test_rmse": 8198.8,
+          "test_r2": 0.9474,
+          "adjusted_r2": 0.9324,
+          "test_mae": 6886.59,
+          "train_rmse": 9078.62,
+          "train_r2": 0.9497,
+          "f_statistic": 63.09,
+          "p_value": "3.33e-05",
+          "intercept": 46346.34,
+          "coefficients": {
+            "R&D Spend": 0.7886,
+            "Marketing Spend": 0.0326
+          }
+        },
+        {
+          "k": 3,
+          "features": [
+            "R&D Spend",
+            "Marketing Spend",
+            "Administration"
+          ],
+          "test_rmse": 8803.78,
+          "test_r2": 0.9394,
+          "adjusted_r2": 0.9091,
+          "test_mae": 7320.44,
+          "train_rmse": 9052.27,
+          "train_r2": 0.95,
+          "f_statistic": 31.0,
+          "p_value": "0.0005",
+          "intercept": 42989.01,
+          "coefficients": {
+            "R&D Spend": 0.7788,
+            "Marketing Spend": 0.0347,
+            "Administration": 0.0294
+          }
+        },
+        {
+          "k": 4,
+          "features": [
+            "R&D Spend",
+            "Marketing Spend",
+            "Administration",
+            "State_Florida"
+          ],
+          "test_rmse": 9068.54,
+          "test_r2": 0.9357,
+          "adjusted_r2": 0.8843,
+          "test_mae": 7431.47,
+          "train_rmse": 9036.51,
+          "train_r2": 0.9501,
+          "f_statistic": 18.19,
+          "p_value": "0.0035",
+          "intercept": 42922.43,
+          "coefficients": {
+            "R&D Spend": 0.7754,
+            "Marketing Spend": 0.0363,
+            "Administration": 0.0319,
+            "State_Florida": -1272.1608
+          }
+        },
+        {
+          "k": 5,
+          "features": [
+            "R&D Spend",
+            "Marketing Spend",
+            "Administration",
+            "State_Florida",
+            "State_New York"
+          ],
+          "test_rmse": 9137.99,
+          "test_r2": 0.9347,
+          "adjusted_r2": 0.8531,
+          "test_mae": 7514.29,
+          "train_rmse": 9031.67,
+          "train_r2": 0.9502,
+          "f_statistic": 11.45,
+          "p_value": "0.0174",
+          "intercept": 42554.17,
+          "coefficients": {
+            "R&D Spend": 0.7735,
+            "Marketing Spend": 0.0366,
+            "Administration": 0.0329,
+            "State_Florida": -959.2842,
+            "State_New York": 699.3691
+          }
+        }
+      ],
+      "Forward SFS": [
+        {
+          "k": 1,
+          "features": [
+            "R&D Spend"
+          ],
+          "test_rmse": 8274.87,
+          "test_r2": 0.9465,
+          "adjusted_r2": 0.9398,
+          "test_mae": 6772.45,
+          "train_rmse": 9493.58,
+          "train_r2": 0.945,
+          "f_statistic": 141.42,
+          "p_value": "2.30e-06",
+          "intercept": 48416.3,
+          "coefficients": {
+            "R&D Spend": 0.8516
+          }
+        },
+        {
+          "k": 2,
+          "features": [
+            "R&D Spend",
+            "Marketing Spend"
+          ],
+          "test_rmse": 8198.8,
+          "test_r2": 0.9474,
+          "adjusted_r2": 0.9324,
+          "test_mae": 6886.59,
+          "train_rmse": 9078.62,
+          "train_r2": 0.9497,
+          "f_statistic": 63.09,
+          "p_value": "3.33e-05",
+          "intercept": 46346.34,
+          "coefficients": {
+            "R&D Spend": 0.7886,
+            "Marketing Spend": 0.0326
+          }
+        },
+        {
+          "k": 3,
+          "features": [
+            "R&D Spend",
+            "Administration",
+            "Marketing Spend"
+          ],
+          "test_rmse": 8803.78,
+          "test_r2": 0.9394,
+          "adjusted_r2": 0.9091,
+          "test_mae": 7320.44,
+          "train_rmse": 9052.27,
+          "train_r2": 0.95,
+          "f_statistic": 31.0,
+          "p_value": "0.0005",
+          "intercept": 42989.01,
+          "coefficients": {
+            "R&D Spend": 0.7788,
+            "Administration": 0.0294,
+            "Marketing Spend": 0.0347
+          }
+        },
+        {
+          "k": 4,
+          "features": [
+            "R&D Spend",
+            "Administration",
+            "Marketing Spend",
+            "State_New York"
+          ],
+          "test_rmse": 8997.2,
+          "test_r2": 0.9367,
+          "adjusted_r2": 0.8861,
+          "test_mae": 7474.74,
+          "train_rmse": 9039.16,
+          "train_r2": 0.9501,
+          "f_statistic": 18.5,
+          "p_value": "0.0034",
+          "intercept": 42410.31,
+          "coefficients": {
+            "R&D Spend": 0.7747,
+            "Administration": 0.0318,
+            "Marketing Spend": 0.0357,
+            "State_New York": 1052.2199
+          }
+        },
+        {
+          "k": 5,
+          "features": [
+            "R&D Spend",
+            "Administration",
+            "Marketing Spend",
+            "State_Florida",
+            "State_New York"
+          ],
+          "test_rmse": 9137.99,
+          "test_r2": 0.9347,
+          "adjusted_r2": 0.8531,
+          "test_mae": 7514.29,
+          "train_rmse": 9031.67,
+          "train_r2": 0.9502,
+          "f_statistic": 11.45,
+          "p_value": "0.0174",
+          "intercept": 42554.17,
+          "coefficients": {
+            "R&D Spend": 0.7735,
+            "Administration": 0.0329,
+            "Marketing Spend": 0.0366,
+            "State_Florida": -959.2842,
+            "State_New York": 699.3691
+          }
+        }
+      ],
+      "RFE": [
+        {
+          "k": 1,
+          "features": [
+            "R&D Spend"
+          ],
+          "test_rmse": 8274.87,
+          "test_r2": 0.9465,
+          "adjusted_r2": 0.9398,
+          "test_mae": 6772.45,
+          "train_rmse": 9493.58,
+          "train_r2": 0.945,
+          "f_statistic": 141.42,
+          "p_value": "2.30e-06",
+          "intercept": 48416.3,
+          "coefficients": {
+            "R&D Spend": 0.8516
+          }
+        },
+        {
+          "k": 2,
+          "features": [
+            "R&D Spend",
+            "Marketing Spend"
+          ],
+          "test_rmse": 8198.8,
+          "test_r2": 0.9474,
+          "adjusted_r2": 0.9324,
+          "test_mae": 6886.59,
+          "train_rmse": 9078.62,
+          "train_r2": 0.9497,
+          "f_statistic": 63.09,
+          "p_value": "3.33e-05",
+          "intercept": 46346.34,
+          "coefficients": {
+            "R&D Spend": 0.7886,
+            "Marketing Spend": 0.0326
+          }
+        },
+        {
+          "k": 3,
+          "features": [
+            "R&D Spend",
+            "Administration",
+            "Marketing Spend"
+          ],
+          "test_rmse": 8803.78,
+          "test_r2": 0.9394,
+          "adjusted_r2": 0.9091,
+          "test_mae": 7320.44,
+          "train_rmse": 9052.27,
+          "train_r2": 0.95,
+          "f_statistic": 31.0,
+          "p_value": "0.0005",
+          "intercept": 42989.01,
+          "coefficients": {
+            "R&D Spend": 0.7788,
+            "Administration": 0.0294,
+            "Marketing Spend": 0.0347
+          }
+        },
+        {
+          "k": 4,
+          "features": [
+            "R&D Spend",
+            "Administration",
+            "Marketing Spend",
+            "State_Florida"
+          ],
+          "test_rmse": 9068.54,
+          "test_r2": 0.9357,
+          "adjusted_r2": 0.8843,
+          "test_mae": 7431.47,
+          "train_rmse": 9036.51,
+          "train_r2": 0.9501,
+          "f_statistic": 18.19,
+          "p_value": "0.0035",
+          "intercept": 42922.43,
+          "coefficients": {
+            "R&D Spend": 0.7754,
+            "Administration": 0.0319,
+            "Marketing Spend": 0.0363,
+            "State_Florida": -1272.1608
+          }
+        },
+        {
+          "k": 5,
+          "features": [
+            "R&D Spend",
+            "Administration",
+            "Marketing Spend",
+            "State_Florida",
+            "State_New York"
+          ],
+          "test_rmse": 9137.99,
+          "test_r2": 0.9347,
+          "adjusted_r2": 0.8531,
+          "test_mae": 7514.29,
+          "train_rmse": 9031.67,
+          "train_r2": 0.9502,
+          "f_statistic": 11.45,
+          "p_value": "0.0174",
+          "intercept": 42554.17,
+          "coefficients": {
+            "R&D Spend": 0.7735,
+            "Administration": 0.0329,
+            "Marketing Spend": 0.0366,
+            "State_Florida": -959.2842,
+            "State_New York": 699.3691
+          }
+        }
+      ],
+      "ElasticNet Ranking": [
+        {
+          "k": 1,
+          "features": [
+            "R&D Spend"
+          ],
+          "test_rmse": 8274.87,
+          "test_r2": 0.9465,
+          "adjusted_r2": 0.9398,
+          "test_mae": 6772.45,
+          "train_rmse": 9493.58,
+          "train_r2": 0.945,
+          "f_statistic": 141.42,
+          "p_value": "2.30e-06",
+          "intercept": 48416.3,
+          "coefficients": {
+            "R&D Spend": 0.8516
+          }
+        },
+        {
+          "k": 2,
+          "features": [
+            "R&D Spend",
+            "Marketing Spend"
+          ],
+          "test_rmse": 8198.8,
+          "test_r2": 0.9474,
+          "adjusted_r2": 0.9324,
+          "test_mae": 6886.59,
+          "train_rmse": 9078.62,
+          "train_r2": 0.9497,
+          "f_statistic": 63.09,
+          "p_value": "3.33e-05",
+          "intercept": 46346.34,
+          "coefficients": {
+            "R&D Spend": 0.7886,
+            "Marketing Spend": 0.0326
+          }
+        },
+        {
+          "k": 3,
+          "features": [
+            "R&D Spend",
+            "Marketing Spend",
+            "Administration"
+          ],
+          "test_rmse": 8803.78,
+          "test_r2": 0.9394,
+          "adjusted_r2": 0.9091,
+          "test_mae": 7320.44,
+          "train_rmse": 9052.27,
+          "train_r2": 0.95,
+          "f_statistic": 31.0,
+          "p_value": "0.0005",
+          "intercept": 42989.01,
+          "coefficients": {
+            "R&D Spend": 0.7788,
+            "Marketing Spend": 0.0347,
+            "Administration": 0.0294
+          }
+        },
+        {
+          "k": 4,
+          "features": [
+            "R&D Spend",
+            "Marketing Spend",
+            "Administration",
+            "State_Florida"
+          ],
+          "test_rmse": 9068.54,
+          "test_r2": 0.9357,
+          "adjusted_r2": 0.8843,
+          "test_mae": 7431.47,
+          "train_rmse": 9036.51,
+          "train_r2": 0.9501,
+          "f_statistic": 18.19,
+          "p_value": "0.0035",
+          "intercept": 42922.43,
+          "coefficients": {
+            "R&D Spend": 0.7754,
+            "Marketing Spend": 0.0363,
+            "Administration": 0.0319,
+            "State_Florida": -1272.1608
+          }
+        },
+        {
+          "k": 5,
+          "features": [
+            "R&D Spend",
+            "Marketing Spend",
+            "Administration",
+            "State_Florida",
+            "State_New York"
+          ],
+          "test_rmse": 9137.99,
+          "test_r2": 0.9347,
+          "adjusted_r2": 0.8531,
+          "test_mae": 7514.29,
+          "train_rmse": 9031.67,
+          "train_r2": 0.9502,
+          "f_statistic": 11.45,
+          "p_value": "0.0174",
+          "intercept": 42554.17,
+          "coefficients": {
+            "R&D Spend": 0.7735,
+            "Marketing Spend": 0.0366,
+            "Administration": 0.0329,
+            "State_Florida": -959.2842,
+            "State_New York": 699.3691
+          }
+        }
+      ],
+      "Exhaustive Search": [
+        {
+          "k": 1,
+          "features": [
+            "R&D Spend"
+          ],
+          "test_rmse": 8274.87,
+          "test_r2": 0.9465,
+          "adjusted_r2": 0.9398,
+          "test_mae": 6772.45,
+          "train_rmse": 9493.58,
+          "train_r2": 0.945,
+          "f_statistic": 141.42,
+          "p_value": "2.30e-06",
+          "intercept": 48416.3,
+          "coefficients": {
+            "R&D Spend": 0.8516
+          }
+        },
+        {
+          "k": 2,
+          "features": [
+            "R&D Spend",
+            "Marketing Spend"
+          ],
+          "test_rmse": 8198.8,
+          "test_r2": 0.9474,
+          "adjusted_r2": 0.9324,
+          "test_mae": 6886.59,
+          "train_rmse": 9078.62,
+          "train_r2": 0.9497,
+          "f_statistic": 63.09,
+          "p_value": "3.33e-05",
+          "intercept": 46346.34,
+          "coefficients": {
+            "R&D Spend": 0.7886,
+            "Marketing Spend": 0.0326
+          }
+        },
+        {
+          "k": 3,
+          "features": [
+            "R&D Spend",
+            "Administration",
+            "Marketing Spend"
+          ],
+          "test_rmse": 8803.78,
+          "test_r2": 0.9394,
+          "adjusted_r2": 0.9091,
+          "test_mae": 7320.44,
+          "train_rmse": 9052.27,
+          "train_r2": 0.95,
+          "f_statistic": 31.0,
+          "p_value": "0.0005",
+          "intercept": 42989.01,
+          "coefficients": {
+            "R&D Spend": 0.7788,
+            "Administration": 0.0294,
+            "Marketing Spend": 0.0347
+          }
+        },
+        {
+          "k": 4,
+          "features": [
+            "R&D Spend",
+            "Administration",
+            "Marketing Spend",
+            "State_Florida"
+          ],
+          "test_rmse": 9068.54,
+          "test_r2": 0.9357,
+          "adjusted_r2": 0.8843,
+          "test_mae": 7431.47,
+          "train_rmse": 9036.51,
+          "train_r2": 0.9501,
+          "f_statistic": 18.19,
+          "p_value": "0.0035",
+          "intercept": 42922.43,
+          "coefficients": {
+            "R&D Spend": 0.7754,
+            "Administration": 0.0319,
+            "Marketing Spend": 0.0363,
+            "State_Florida": -1272.1608
+          }
+        },
+        {
+          "k": 5,
+          "features": [
+            "R&D Spend",
+            "Administration",
+            "Marketing Spend",
+            "State_Florida",
+            "State_New York"
+          ],
+          "test_rmse": 9137.99,
+          "test_r2": 0.9347,
+          "adjusted_r2": 0.8531,
+          "test_mae": 7514.29,
+          "train_rmse": 9031.67,
+          "train_r2": 0.9502,
+          "f_statistic": 11.45,
+          "p_value": "0.0174",
+          "intercept": 42554.17,
+          "coefficients": {
+            "R&D Spend": 0.7735,
+            "Administration": 0.0329,
+            "Marketing Spend": 0.0366,
+            "State_Florida": -959.2842,
+            "State_New York": 699.3691
+          }
+        }
+      ]
+    }
+  },
+  "boston_housing": {
+    "name": "Boston Housing Prices",
+    "target_col": "medv",
+    "total_samples": 506,
+    "train_samples": 404,
+    "test_samples": 102,
+    "features_all": [
+      "crim",
+      "zn",
+      "indus",
+      "chas",
+      "nox",
+      "rm",
+      "age",
+      "dis",
+      "rad",
+      "tax",
+      "ptratio",
+      "b",
+      "lstat"
+    ],
+    "max_k": 13,
+    "sweet_spot_k": 11,
+    "sweet_spot_features": [
+      "lstat",
+      "dis",
+      "rm",
+      "ptratio",
+      "rad",
+      "nox",
+      "tax",
+      "zn",
+      "crim",
+      "b",
+      "chas"
+    ],
+    "sweet_spot_rmse": 5.78,
+    "sweet_spot_r2": 0.5895,
+    "methods_data": {
+      "Lasso (L1 Ranking)": [
+        {
+          "k": 1,
+          "features": [
+            "lstat"
+          ],
+          "test_rmse": 6.81,
+          "test_r2": 0.431,
+          "adjusted_r2": 0.4253,
+          "test_mae": 4.86,
+          "train_rmse": 6.04,
+          "train_r2": 0.571,
+          "f_statistic": 75.73,
+          "p_value": "6.82e-14",
+          "intercept": 34.77,
+          "coefficients": {
+            "lstat": -0.9565
+          }
+        },
+        {
+          "k": 2,
+          "features": [
+            "lstat",
+            "dis"
+          ],
+          "test_rmse": 6.58,
+          "test_r2": 0.468,
+          "adjusted_r2": 0.4573,
+          "test_mae": 4.75,
+          "train_rmse": 5.95,
+          "train_r2": 0.5842,
+          "f_statistic": 43.55,
+          "p_value": "2.70e-14",
+          "intercept": 38.07,
+          "coefficients": {
+            "lstat": -1.0411,
+            "dis": -0.59
+          }
+        },
+        {
+          "k": 3,
+          "features": [
+            "lstat",
+            "dis",
+            "rm"
+          ],
+          "test_rmse": 5.97,
+          "test_r2": 0.562,
+          "adjusted_r2": 0.5486,
+          "test_mae": 4.08,
+          "train_rmse": 5.33,
+          "train_r2": 0.6664,
+          "f_statistic": 41.91,
+          "p_value": "0.00e+00",
+          "intercept": 2.01,
+          "coefficients": {
+            "lstat": -0.7164,
+            "dis": -0.3523,
+            "rm": 4.9239
+          }
+        },
+        {
+          "k": 4,
+          "features": [
+            "lstat",
+            "dis",
+            "rm",
+            "ptratio"
+          ],
+          "test_rmse": 6.25,
+          "test_r2": 0.5195,
+          "adjusted_r2": 0.4997,
+          "test_mae": 4.3,
+          "train_rmse": 4.81,
+          "train_r2": 0.7282,
+          "f_statistic": 26.22,
+          "p_value": "9.55e-15",
+          "intercept": 28.31,
+          "coefficients": {
+            "lstat": -0.6469,
+            "dis": -0.4165,
+            "rm": 4.0323,
+            "ptratio": -1.155
+          }
+        },
+        {
+          "k": 5,
+          "features": [
+            "lstat",
+            "dis",
+            "rm",
+            "ptratio",
+            "rad"
+          ],
+          "test_rmse": 6.35,
+          "test_r2": 0.5047,
+          "adjusted_r2": 0.4789,
+          "test_mae": 4.31,
+          "train_rmse": 4.78,
+          "train_r2": 0.7312,
+          "f_statistic": 19.56,
+          "p_value": "2.17e-13",
+          "intercept": 25.99,
+          "coefficients": {
+            "lstat": -0.6175,
+            "dis": -0.5061,
+            "rm": 4.213,
+            "ptratio": -1.0542,
+            "rad": -0.0755
+          }
+        },
+        {
+          "k": 6,
+          "features": [
+            "lstat",
+            "dis",
+            "rm",
+            "ptratio",
+            "rad",
+            "nox"
+          ],
+          "test_rmse": 6.13,
+          "test_r2": 0.5383,
+          "adjusted_r2": 0.5091,
+          "test_mae": 4.21,
+          "train_rmse": 4.64,
+          "train_r2": 0.7473,
+          "f_statistic": 18.46,
+          "p_value": "4.13e-14",
+          "intercept": 42.42,
+          "coefficients": {
+            "lstat": -0.566,
+            "dis": -1.0923,
+            "rm": 3.9414,
+            "ptratio": -1.2215,
+            "rad": 0.0171,
+            "nox": -19.6845
+          }
+        },
+        {
+          "k": 7,
+          "features": [
+            "lstat",
+            "dis",
+            "rm",
+            "ptratio",
+            "rad",
+            "nox",
+            "tax"
+          ],
+          "test_rmse": 6.06,
+          "test_r2": 0.5495,
+          "adjusted_r2": 0.5159,
+          "test_mae": 4.12,
+          "train_rmse": 4.59,
+          "train_r2": 0.752,
+          "f_statistic": 16.38,
+          "p_value": "6.18e-14",
+          "intercept": 43.68,
+          "coefficients": {
+            "lstat": -0.5606,
+            "dis": -1.105,
+            "rm": 3.8134,
+            "ptratio": -1.1808,
+            "rad": 0.1583,
+            "nox": -17.3189,
+            "tax": -0.0096
+          }
+        },
+        {
+          "k": 8,
+          "features": [
+            "lstat",
+            "dis",
+            "rm",
+            "ptratio",
+            "rad",
+            "nox",
+            "tax",
+            "zn"
+          ],
+          "test_rmse": 6.02,
+          "test_r2": 0.5555,
+          "adjusted_r2": 0.5173,
+          "test_mae": 4.04,
+          "train_rmse": 4.55,
+          "train_r2": 0.7569,
+          "f_statistic": 14.53,
+          "p_value": "1.45e-13",
+          "intercept": 43.22,
+          "coefficients": {
+            "lstat": -0.5669,
+            "dis": -1.3843,
+            "rm": 3.5762,
+            "ptratio": -1.0421,
+            "rad": 0.1682,
+            "nox": -15.9567,
+            "tax": -0.0116,
+            "zn": 0.0408
+          }
+        },
+        {
+          "k": 9,
+          "features": [
+            "lstat",
+            "dis",
+            "rm",
+            "ptratio",
+            "rad",
+            "nox",
+            "tax",
+            "zn",
+            "crim"
+          ],
+          "test_rmse": 5.94,
+          "test_r2": 0.5672,
+          "adjusted_r2": 0.5249,
+          "test_mae": 3.95,
+          "train_rmse": 4.48,
+          "train_r2": 0.7639,
+          "f_statistic": 13.4,
+          "p_value": "1.81e-13",
+          "intercept": 43.25,
+          "coefficients": {
+            "lstat": -0.5288,
+            "dis": -1.4519,
+            "rm": 3.6157,
+            "ptratio": -1.0505,
+            "rad": 0.2386,
+            "nox": -16.8556,
+            "tax": -0.0119,
+            "zn": 0.0451,
+            "crim": -0.1273
+          }
+        },
+        {
+          "k": 10,
+          "features": [
+            "lstat",
+            "dis",
+            "rm",
+            "ptratio",
+            "rad",
+            "nox",
+            "tax",
+            "zn",
+            "crim",
+            "b"
+          ],
+          "test_rmse": 5.85,
+          "test_r2": 0.5795,
+          "adjusted_r2": 0.5333,
+          "test_mae": 3.84,
+          "train_rmse": 4.43,
+          "train_r2": 0.769,
+          "f_statistic": 12.54,
+          "p_value": "2.02e-13",
+          "intercept": 38.39,
+          "coefficients": {
+            "lstat": -0.4961,
+            "dis": -1.4121,
+            "rm": 3.7471,
+            "ptratio": -1.0711,
+            "rad": 0.2606,
+            "nox": -16.1327,
+            "tax": -0.0116,
+            "zn": 0.0448,
+            "crim": -0.1254,
+            "b": 0.0087
+          }
+        },
+        {
+          "k": 11,
+          "features": [
+            "lstat",
+            "dis",
+            "rm",
+            "ptratio",
+            "rad",
+            "nox",
+            "tax",
+            "zn",
+            "crim",
+            "b",
+            "chas"
+          ],
+          "test_rmse": 5.78,
+          "test_r2": 0.5895,
+          "adjusted_r2": 0.5394,
+          "test_mae": 3.84,
+          "train_rmse": 4.4,
+          "train_r2": 0.773,
+          "f_statistic": 11.75,
+          "p_value": "2.70e-13",
+          "intercept": 38.16,
+          "coefficients": {
+            "lstat": -0.4966,
+            "dis": -1.3773,
+            "rm": 3.6855,
+            "ptratio": -1.0457,
+            "rad": 0.2432,
+            "nox": -16.2979,
+            "tax": -0.0108,
+            "zn": 0.0451,
+            "crim": -0.1193,
+            "b": 0.008,
+            "chas": 2.3428
+          }
+        },
+        {
+          "k": 12,
+          "features": [
+            "lstat",
+            "dis",
+            "rm",
+            "ptratio",
+            "rad",
+            "nox",
+            "tax",
+            "zn",
+            "crim",
+            "b",
+            "chas",
+            "age"
+          ],
+          "test_rmse": 5.78,
+          "test_r2": 0.5891,
+          "adjusted_r2": 0.5337,
+          "test_mae": 3.85,
+          "train_rmse": 4.4,
+          "train_r2": 0.773,
+          "f_statistic": 10.63,
+          "p_value": "1.00e-12",
+          "intercept": 38.06,
+          "coefficients": {
+            "lstat": -0.4924,
+            "dis": -1.3905,
+            "rm": 3.7051,
+            "ptratio": -1.0441,
+            "rad": 0.2423,
+            "nox": -16.0297,
+            "tax": -0.0108,
+            "zn": 0.0447,
+            "crim": -0.1196,
+            "b": 0.0081,
+            "chas": 2.3477,
+            "age": -0.0031
+          }
+        },
+        {
+          "k": 13,
+          "features": [
+            "lstat",
+            "dis",
+            "rm",
+            "ptratio",
+            "rad",
+            "nox",
+            "tax",
+            "zn",
+            "crim",
+            "b",
+            "chas",
+            "age",
+            "indus"
+          ],
+          "test_rmse": 5.78,
+          "test_r2": 0.5892,
+          "adjusted_r2": 0.5285,
+          "test_mae": 3.84,
+          "train_rmse": 4.4,
+          "train_r2": 0.773,
+          "f_statistic": 9.71,
+          "p_value": "3.33e-12",
+          "intercept": 38.09,
+          "coefficients": {
+            "lstat": -0.4928,
+            "dis": -1.3864,
+            "rm": 3.7087,
+            "ptratio": -1.0459,
+            "rad": 0.2442,
+            "nox": -16.1236,
+            "tax": -0.011,
+            "zn": 0.0448,
+            "crim": -0.1194,
+            "b": 0.0081,
+            "chas": 2.3408,
+            "age": -0.0031,
+            "indus": 0.0055
+          }
+        }
+      ],
+      "Forward SFS": [
+        {
+          "k": 1,
+          "features": [
+            "lstat"
+          ],
+          "test_rmse": 6.81,
+          "test_r2": 0.431,
+          "adjusted_r2": 0.4253,
+          "test_mae": 4.86,
+          "train_rmse": 6.04,
+          "train_r2": 0.571,
+          "f_statistic": 75.73,
+          "p_value": "6.82e-14",
+          "intercept": 34.77,
+          "coefficients": {
+            "lstat": -0.9565
+          }
+        },
+        {
+          "k": 2,
+          "features": [
+            "rm",
+            "lstat"
+          ],
+          "test_rmse": 6.11,
+          "test_r2": 0.5409,
+          "adjusted_r2": 0.5316,
+          "test_mae": 4.14,
+          "train_rmse": 5.37,
+          "train_r2": 0.6619,
+          "f_statistic": 58.32,
+          "p_value": "0.00e+00",
+          "intercept": -1.26,
+          "coefficients": {
+            "rm": 5.1091,
+            "lstat": -0.6549
+          }
+        },
+        {
+          "k": 3,
+          "features": [
+            "rm",
+            "ptratio",
+            "lstat"
+          ],
+          "test_rmse": 6.46,
+          "test_r2": 0.4882,
+          "adjusted_r2": 0.4725,
+          "test_mae": 4.4,
+          "train_rmse": 4.87,
+          "train_r2": 0.7219,
+          "f_statistic": 31.16,
+          "p_value": "3.14e-14",
+          "intercept": 24.03,
+          "coefficients": {
+            "rm": 4.2649,
+            "ptratio": -1.1365,
+            "lstat": -0.5755
+          }
+        },
+        {
+          "k": 4,
+          "features": [
+            "rm",
+            "ptratio",
+            "b",
+            "lstat"
+          ],
+          "test_rmse": 6.38,
+          "test_r2": 0.4996,
+          "adjusted_r2": 0.4789,
+          "test_mae": 4.22,
+          "train_rmse": 4.79,
+          "train_r2": 0.7303,
+          "f_statistic": 24.21,
+          "p_value": "6.62e-14",
+          "intercept": 17.49,
+          "coefficients": {
+            "rm": 4.5131,
+            "ptratio": -1.1151,
+            "b": 0.0105,
+            "lstat": -0.5124
+          }
+        },
+        {
+          "k": 5,
+          "features": [
+            "rm",
+            "dis",
+            "ptratio",
+            "b",
+            "lstat"
+          ],
+          "test_rmse": 6.13,
+          "test_r2": 0.5387,
+          "adjusted_r2": 0.5147,
+          "test_mae": 4.08,
+          "train_rmse": 4.73,
+          "train_r2": 0.7376,
+          "f_statistic": 22.42,
+          "p_value": "7.77e-15",
+          "intercept": 21.71,
+          "coefficients": {
+            "rm": 4.2775,
+            "dis": -0.4478,
+            "ptratio": -1.1337,
+            "b": 0.0111,
+            "lstat": -0.5854
+          }
+        },
+        {
+          "k": 6,
+          "features": [
+            "nox",
+            "rm",
+            "dis",
+            "ptratio",
+            "b",
+            "lstat"
+          ],
+          "test_rmse": 6.05,
+          "test_r2": 0.5498,
+          "adjusted_r2": 0.5213,
+          "test_mae": 4.04,
+          "train_rmse": 4.59,
+          "train_r2": 0.7522,
+          "f_statistic": 19.33,
+          "p_value": "1.30e-14",
+          "intercept": 35.07,
+          "coefficients": {
+            "nox": -16.914,
+            "rm": 4.1719,
+            "dis": -1.0379,
+            "ptratio": -1.1768,
+            "b": 0.0083,
+            "lstat": -0.5259
+          }
+        },
+        {
+          "k": 7,
+          "features": [
+            "crim",
+            "nox",
+            "rm",
+            "dis",
+            "ptratio",
+            "b",
+            "lstat"
+          ],
+          "test_rmse": 6.1,
+          "test_r2": 0.5435,
+          "adjusted_r2": 0.5095,
+          "test_mae": 4.01,
+          "train_rmse": 4.57,
+          "train_r2": 0.7552,
+          "f_statistic": 15.99,
+          "p_value": "1.12e-13",
+          "intercept": 33.22,
+          "coefficients": {
+            "crim": -0.0749,
+            "nox": -15.9003,
+            "rm": 4.2923,
+            "dis": -1.0469,
+            "ptratio": -1.1354,
+            "b": 0.0075,
+            "lstat": -0.4995
+          }
+        },
+        {
+          "k": 8,
+          "features": [
+            "crim",
+            "zn",
+            "nox",
+            "rm",
+            "dis",
+            "ptratio",
+            "b",
+            "lstat"
+          ],
+          "test_rmse": 6.04,
+          "test_r2": 0.5519,
+          "adjusted_r2": 0.5133,
+          "test_mae": 3.96,
+          "train_rmse": 4.52,
+          "train_r2": 0.7597,
+          "f_statistic": 14.32,
+          "p_value": "2.08e-13",
+          "intercept": 33.11,
+          "coefficients": {
+            "crim": -0.0884,
+            "zn": 0.0385,
+            "nox": -15.662,
+            "rm": 4.0766,
+            "dis": -1.3162,
+            "ptratio": -1.0304,
+            "b": 0.0077,
+            "lstat": -0.5036
+          }
+        },
+        {
+          "k": 9,
+          "features": [
+            "crim",
+            "zn",
+            "nox",
+            "rm",
+            "dis",
+            "rad",
+            "ptratio",
+            "b",
+            "lstat"
+          ],
+          "test_rmse": 5.94,
+          "test_r2": 0.5671,
+          "adjusted_r2": 0.5248,
+          "test_mae": 3.96,
+          "train_rmse": 4.5,
+          "train_r2": 0.7624,
+          "f_statistic": 13.39,
+          "p_value": "1.83e-13",
+          "intercept": 36.86,
+          "coefficients": {
+            "crim": -0.122,
+            "zn": 0.0351,
+            "nox": -19.1397,
+            "rm": 3.9546,
+            "dis": -1.3287,
+            "rad": 0.0937,
+            "ptratio": -1.1513,
+            "b": 0.009,
+            "lstat": -0.5007
+          }
+        },
+        {
+          "k": 10,
+          "features": [
+            "crim",
+            "zn",
+            "nox",
+            "rm",
+            "dis",
+            "rad",
+            "tax",
+            "ptratio",
+            "b",
+            "lstat"
+          ],
+          "test_rmse": 5.85,
+          "test_r2": 0.5795,
+          "adjusted_r2": 0.5333,
+          "test_mae": 3.84,
+          "train_rmse": 4.43,
+          "train_r2": 0.769,
+          "f_statistic": 12.54,
+          "p_value": "2.02e-13",
+          "intercept": 38.39,
+          "coefficients": {
+            "crim": -0.1254,
+            "zn": 0.0448,
+            "nox": -16.1327,
+            "rm": 3.7471,
+            "dis": -1.4121,
+            "rad": 0.2606,
+            "tax": -0.0116,
+            "ptratio": -1.0711,
+            "b": 0.0087,
+            "lstat": -0.4961
+          }
+        },
+        {
+          "k": 11,
+          "features": [
+            "crim",
+            "zn",
+            "nox",
+            "rm",
+            "age",
+            "dis",
+            "rad",
+            "tax",
+            "ptratio",
+            "b",
+            "lstat"
+          ],
+          "test_rmse": 5.85,
+          "test_r2": 0.5791,
+          "adjusted_r2": 0.5276,
+          "test_mae": 3.84,
+          "train_rmse": 4.43,
+          "train_r2": 0.769,
+          "f_statistic": 11.26,
+          "p_value": "7.74e-13",
+          "intercept": 38.32,
+          "coefficients": {
+            "crim": -0.1257,
+            "zn": 0.0445,
+            "nox": -15.9439,
+            "rm": 3.761,
+            "age": -0.0022,
+            "dis": -1.4214,
+            "rad": 0.26,
+            "tax": -0.0116,
+            "ptratio": -1.07,
+            "b": 0.0087,
+            "lstat": -0.4931
+          }
+        },
+        {
+          "k": 12,
+          "features": [
+            "crim",
+            "zn",
+            "chas",
+            "nox",
+            "rm",
+            "age",
+            "dis",
+            "rad",
+            "tax",
+            "ptratio",
+            "b",
+            "lstat"
+          ],
+          "test_rmse": 5.78,
+          "test_r2": 0.5891,
+          "adjusted_r2": 0.5337,
+          "test_mae": 3.85,
+          "train_rmse": 4.4,
+          "train_r2": 0.773,
+          "f_statistic": 10.63,
+          "p_value": "1.00e-12",
+          "intercept": 38.06,
+          "coefficients": {
+            "crim": -0.1196,
+            "zn": 0.0447,
+            "chas": 2.3477,
+            "nox": -16.0297,
+            "rm": 3.7051,
+            "age": -0.0031,
+            "dis": -1.3905,
+            "rad": 0.2423,
+            "tax": -0.0108,
+            "ptratio": -1.0441,
+            "b": 0.0081,
+            "lstat": -0.4924
+          }
+        },
+        {
+          "k": 13,
+          "features": [
+            "crim",
+            "zn",
+            "indus",
+            "chas",
+            "nox",
+            "rm",
+            "age",
+            "dis",
+            "rad",
+            "tax",
+            "ptratio",
+            "b",
+            "lstat"
+          ],
+          "test_rmse": 5.78,
+          "test_r2": 0.5892,
+          "adjusted_r2": 0.5285,
+          "test_mae": 3.84,
+          "train_rmse": 4.4,
+          "train_r2": 0.773,
+          "f_statistic": 9.71,
+          "p_value": "3.33e-12",
+          "intercept": 38.09,
+          "coefficients": {
+            "crim": -0.1194,
+            "zn": 0.0448,
+            "indus": 0.0055,
+            "chas": 2.3408,
+            "nox": -16.1236,
+            "rm": 3.7087,
+            "age": -0.0031,
+            "dis": -1.3864,
+            "rad": 0.2442,
+            "tax": -0.011,
+            "ptratio": -1.0459,
+            "b": 0.0081,
+            "lstat": -0.4928
+          }
+        }
+      ],
+      "RFE": [
+        {
+          "k": 1,
+          "features": [
+            "lstat"
+          ],
+          "test_rmse": 6.81,
+          "test_r2": 0.431,
+          "adjusted_r2": 0.4253,
+          "test_mae": 4.86,
+          "train_rmse": 6.04,
+          "train_r2": 0.571,
+          "f_statistic": 75.73,
+          "p_value": "6.82e-14",
+          "intercept": 34.77,
+          "coefficients": {
+            "lstat": -0.9565
+          }
+        },
+        {
+          "k": 2,
+          "features": [
+            "rm",
+            "lstat"
+          ],
+          "test_rmse": 6.11,
+          "test_r2": 0.5409,
+          "adjusted_r2": 0.5316,
+          "test_mae": 4.14,
+          "train_rmse": 5.37,
+          "train_r2": 0.6619,
+          "f_statistic": 58.32,
+          "p_value": "0.00e+00",
+          "intercept": -1.26,
+          "coefficients": {
+            "rm": 5.1091,
+            "lstat": -0.6549
+          }
+        },
+        {
+          "k": 3,
+          "features": [
+            "rm",
+            "ptratio",
+            "lstat"
+          ],
+          "test_rmse": 6.46,
+          "test_r2": 0.4882,
+          "adjusted_r2": 0.4725,
+          "test_mae": 4.4,
+          "train_rmse": 4.87,
+          "train_r2": 0.7219,
+          "f_statistic": 31.16,
+          "p_value": "3.14e-14",
+          "intercept": 24.03,
+          "coefficients": {
+            "rm": 4.2649,
+            "ptratio": -1.1365,
+            "lstat": -0.5755
+          }
+        },
+        {
+          "k": 4,
+          "features": [
+            "rm",
+            "dis",
+            "ptratio",
+            "lstat"
+          ],
+          "test_rmse": 6.25,
+          "test_r2": 0.5195,
+          "adjusted_r2": 0.4997,
+          "test_mae": 4.3,
+          "train_rmse": 4.81,
+          "train_r2": 0.7282,
+          "f_statistic": 26.22,
+          "p_value": "9.55e-15",
+          "intercept": 28.31,
+          "coefficients": {
+            "rm": 4.0323,
+            "dis": -0.4165,
+            "ptratio": -1.155,
+            "lstat": -0.6469
+          }
+        },
+        {
+          "k": 5,
+          "features": [
+            "nox",
+            "rm",
+            "dis",
+            "ptratio",
+            "lstat"
+          ],
+          "test_rmse": 6.15,
+          "test_r2": 0.5353,
+          "adjusted_r2": 0.511,
+          "test_mae": 4.21,
+          "train_rmse": 4.64,
+          "train_r2": 0.7472,
+          "f_statistic": 22.11,
+          "p_value": "1.11e-14",
+          "intercept": 41.35,
+          "coefficients": {
+            "nox": -18.8969,
+            "rm": 3.9842,
+            "dis": -1.0847,
+            "ptratio": -1.197,
+            "lstat": -0.5629
+          }
+        },
+        {
+          "k": 6,
+          "features": [
+            "nox",
+            "rm",
+            "dis",
+            "tax",
+            "ptratio",
+            "lstat"
+          ],
+          "test_rmse": 6.18,
+          "test_r2": 0.5306,
+          "adjusted_r2": 0.501,
+          "test_mae": 4.18,
+          "train_rmse": 4.63,
+          "train_r2": 0.7483,
+          "f_statistic": 17.9,
+          "p_value": "8.76e-14",
+          "intercept": 39.14,
+          "coefficients": {
+            "nox": -16.3104,
+            "rm": 4.0502,
+            "dis": -1.0701,
+            "tax": -0.0028,
+            "ptratio": -1.1261,
+            "lstat": -0.5538
+          }
+        },
+        {
+          "k": 7,
+          "features": [
+            "nox",
+            "rm",
+            "dis",
+            "rad",
+            "tax",
+            "ptratio",
+            "lstat"
+          ],
+          "test_rmse": 6.06,
+          "test_r2": 0.5495,
+          "adjusted_r2": 0.5159,
+          "test_mae": 4.12,
+          "train_rmse": 4.59,
+          "train_r2": 0.752,
+          "f_statistic": 16.38,
+          "p_value": "6.18e-14",
+          "intercept": 43.68,
+          "coefficients": {
+            "nox": -17.3189,
+            "rm": 3.8134,
+            "dis": -1.105,
+            "rad": 0.1583,
+            "tax": -0.0096,
+            "ptratio": -1.1808,
+            "lstat": -0.5606
+          }
+        },
+        {
+          "k": 8,
+          "features": [
+            "zn",
+            "nox",
+            "rm",
+            "dis",
+            "rad",
+            "tax",
+            "ptratio",
+            "lstat"
+          ],
+          "test_rmse": 6.02,
+          "test_r2": 0.5555,
+          "adjusted_r2": 0.5173,
+          "test_mae": 4.04,
+          "train_rmse": 4.55,
+          "train_r2": 0.7569,
+          "f_statistic": 14.53,
+          "p_value": "1.45e-13",
+          "intercept": 43.22,
+          "coefficients": {
+            "zn": 0.0408,
+            "nox": -15.9567,
+            "rm": 3.5762,
+            "dis": -1.3843,
+            "rad": 0.1682,
+            "tax": -0.0116,
+            "ptratio": -1.0421,
+            "lstat": -0.5669
+          }
+        },
+        {
+          "k": 9,
+          "features": [
+            "crim",
+            "zn",
+            "nox",
+            "rm",
+            "dis",
+            "rad",
+            "tax",
+            "ptratio",
+            "lstat"
+          ],
+          "test_rmse": 5.94,
+          "test_r2": 0.5672,
+          "adjusted_r2": 0.5249,
+          "test_mae": 3.95,
+          "train_rmse": 4.48,
+          "train_r2": 0.7639,
+          "f_statistic": 13.4,
+          "p_value": "1.81e-13",
+          "intercept": 43.25,
+          "coefficients": {
+            "crim": -0.1273,
+            "zn": 0.0451,
+            "nox": -16.8556,
+            "rm": 3.6157,
+            "dis": -1.4519,
+            "rad": 0.2386,
+            "tax": -0.0119,
+            "ptratio": -1.0505,
+            "lstat": -0.5288
+          }
+        },
+        {
+          "k": 10,
+          "features": [
+            "crim",
+            "zn",
+            "nox",
+            "rm",
+            "dis",
+            "rad",
+            "tax",
+            "ptratio",
+            "b",
+            "lstat"
+          ],
+          "test_rmse": 5.85,
+          "test_r2": 0.5795,
+          "adjusted_r2": 0.5333,
+          "test_mae": 3.84,
+          "train_rmse": 4.43,
+          "train_r2": 0.769,
+          "f_statistic": 12.54,
+          "p_value": "2.02e-13",
+          "intercept": 38.39,
+          "coefficients": {
+            "crim": -0.1254,
+            "zn": 0.0448,
+            "nox": -16.1327,
+            "rm": 3.7471,
+            "dis": -1.4121,
+            "rad": 0.2606,
+            "tax": -0.0116,
+            "ptratio": -1.0711,
+            "b": 0.0087,
+            "lstat": -0.4961
+          }
+        },
+        {
+          "k": 11,
+          "features": [
+            "crim",
+            "zn",
+            "chas",
+            "nox",
+            "rm",
+            "dis",
+            "rad",
+            "tax",
+            "ptratio",
+            "b",
+            "lstat"
+          ],
+          "test_rmse": 5.78,
+          "test_r2": 0.5895,
+          "adjusted_r2": 0.5394,
+          "test_mae": 3.84,
+          "train_rmse": 4.4,
+          "train_r2": 0.773,
+          "f_statistic": 11.75,
+          "p_value": "2.70e-13",
+          "intercept": 38.16,
+          "coefficients": {
+            "crim": -0.1193,
+            "zn": 0.0451,
+            "chas": 2.3428,
+            "nox": -16.2979,
+            "rm": 3.6855,
+            "dis": -1.3773,
+            "rad": 0.2432,
+            "tax": -0.0108,
+            "ptratio": -1.0457,
+            "b": 0.008,
+            "lstat": -0.4966
+          }
+        },
+        {
+          "k": 12,
+          "features": [
+            "crim",
+            "zn",
+            "chas",
+            "nox",
+            "rm",
+            "age",
+            "dis",
+            "rad",
+            "tax",
+            "ptratio",
+            "b",
+            "lstat"
+          ],
+          "test_rmse": 5.78,
+          "test_r2": 0.5891,
+          "adjusted_r2": 0.5337,
+          "test_mae": 3.85,
+          "train_rmse": 4.4,
+          "train_r2": 0.773,
+          "f_statistic": 10.63,
+          "p_value": "1.00e-12",
+          "intercept": 38.06,
+          "coefficients": {
+            "crim": -0.1196,
+            "zn": 0.0447,
+            "chas": 2.3477,
+            "nox": -16.0297,
+            "rm": 3.7051,
+            "age": -0.0031,
+            "dis": -1.3905,
+            "rad": 0.2423,
+            "tax": -0.0108,
+            "ptratio": -1.0441,
+            "b": 0.0081,
+            "lstat": -0.4924
+          }
+        },
+        {
+          "k": 13,
+          "features": [
+            "crim",
+            "zn",
+            "indus",
+            "chas",
+            "nox",
+            "rm",
+            "age",
+            "dis",
+            "rad",
+            "tax",
+            "ptratio",
+            "b",
+            "lstat"
+          ],
+          "test_rmse": 5.78,
+          "test_r2": 0.5892,
+          "adjusted_r2": 0.5285,
+          "test_mae": 3.84,
+          "train_rmse": 4.4,
+          "train_r2": 0.773,
+          "f_statistic": 9.71,
+          "p_value": "3.33e-12",
+          "intercept": 38.09,
+          "coefficients": {
+            "crim": -0.1194,
+            "zn": 0.0448,
+            "indus": 0.0055,
+            "chas": 2.3408,
+            "nox": -16.1236,
+            "rm": 3.7087,
+            "age": -0.0031,
+            "dis": -1.3864,
+            "rad": 0.2442,
+            "tax": -0.011,
+            "ptratio": -1.0459,
+            "b": 0.0081,
+            "lstat": -0.4928
+          }
+        }
+      ],
+      "ElasticNet Ranking": [
+        {
+          "k": 1,
+          "features": [
+            "lstat"
+          ],
+          "test_rmse": 6.81,
+          "test_r2": 0.431,
+          "adjusted_r2": 0.4253,
+          "test_mae": 4.86,
+          "train_rmse": 6.04,
+          "train_r2": 0.571,
+          "f_statistic": 75.73,
+          "p_value": "6.82e-14",
+          "intercept": 34.77,
+          "coefficients": {
+            "lstat": -0.9565
+          }
+        },
+        {
+          "k": 2,
+          "features": [
+            "lstat",
+            "dis"
+          ],
+          "test_rmse": 6.58,
+          "test_r2": 0.468,
+          "adjusted_r2": 0.4573,
+          "test_mae": 4.75,
+          "train_rmse": 5.95,
+          "train_r2": 0.5842,
+          "f_statistic": 43.55,
+          "p_value": "2.70e-14",
+          "intercept": 38.07,
+          "coefficients": {
+            "lstat": -1.0411,
+            "dis": -0.59
+          }
+        },
+        {
+          "k": 3,
+          "features": [
+            "lstat",
+            "dis",
+            "rm"
+          ],
+          "test_rmse": 5.97,
+          "test_r2": 0.562,
+          "adjusted_r2": 0.5486,
+          "test_mae": 4.08,
+          "train_rmse": 5.33,
+          "train_r2": 0.6664,
+          "f_statistic": 41.91,
+          "p_value": "0.00e+00",
+          "intercept": 2.01,
+          "coefficients": {
+            "lstat": -0.7164,
+            "dis": -0.3523,
+            "rm": 4.9239
+          }
+        },
+        {
+          "k": 4,
+          "features": [
+            "lstat",
+            "dis",
+            "rm",
+            "ptratio"
+          ],
+          "test_rmse": 6.25,
+          "test_r2": 0.5195,
+          "adjusted_r2": 0.4997,
+          "test_mae": 4.3,
+          "train_rmse": 4.81,
+          "train_r2": 0.7282,
+          "f_statistic": 26.22,
+          "p_value": "9.55e-15",
+          "intercept": 28.31,
+          "coefficients": {
+            "lstat": -0.6469,
+            "dis": -0.4165,
+            "rm": 4.0323,
+            "ptratio": -1.155
+          }
+        },
+        {
+          "k": 5,
+          "features": [
+            "lstat",
+            "dis",
+            "rm",
+            "ptratio",
+            "rad"
+          ],
+          "test_rmse": 6.35,
+          "test_r2": 0.5047,
+          "adjusted_r2": 0.4789,
+          "test_mae": 4.31,
+          "train_rmse": 4.78,
+          "train_r2": 0.7312,
+          "f_statistic": 19.56,
+          "p_value": "2.17e-13",
+          "intercept": 25.99,
+          "coefficients": {
+            "lstat": -0.6175,
+            "dis": -0.5061,
+            "rm": 4.213,
+            "ptratio": -1.0542,
+            "rad": -0.0755
+          }
+        },
+        {
+          "k": 6,
+          "features": [
+            "lstat",
+            "dis",
+            "rm",
+            "ptratio",
+            "rad",
+            "nox"
+          ],
+          "test_rmse": 6.13,
+          "test_r2": 0.5383,
+          "adjusted_r2": 0.5091,
+          "test_mae": 4.21,
+          "train_rmse": 4.64,
+          "train_r2": 0.7473,
+          "f_statistic": 18.46,
+          "p_value": "4.13e-14",
+          "intercept": 42.42,
+          "coefficients": {
+            "lstat": -0.566,
+            "dis": -1.0923,
+            "rm": 3.9414,
+            "ptratio": -1.2215,
+            "rad": 0.0171,
+            "nox": -19.6845
+          }
+        },
+        {
+          "k": 7,
+          "features": [
+            "lstat",
+            "dis",
+            "rm",
+            "ptratio",
+            "rad",
+            "nox",
+            "tax"
+          ],
+          "test_rmse": 6.06,
+          "test_r2": 0.5495,
+          "adjusted_r2": 0.5159,
+          "test_mae": 4.12,
+          "train_rmse": 4.59,
+          "train_r2": 0.752,
+          "f_statistic": 16.38,
+          "p_value": "6.18e-14",
+          "intercept": 43.68,
+          "coefficients": {
+            "lstat": -0.5606,
+            "dis": -1.105,
+            "rm": 3.8134,
+            "ptratio": -1.1808,
+            "rad": 0.1583,
+            "nox": -17.3189,
+            "tax": -0.0096
+          }
+        },
+        {
+          "k": 8,
+          "features": [
+            "lstat",
+            "dis",
+            "rm",
+            "ptratio",
+            "rad",
+            "nox",
+            "tax",
+            "zn"
+          ],
+          "test_rmse": 6.02,
+          "test_r2": 0.5555,
+          "adjusted_r2": 0.5173,
+          "test_mae": 4.04,
+          "train_rmse": 4.55,
+          "train_r2": 0.7569,
+          "f_statistic": 14.53,
+          "p_value": "1.45e-13",
+          "intercept": 43.22,
+          "coefficients": {
+            "lstat": -0.5669,
+            "dis": -1.3843,
+            "rm": 3.5762,
+            "ptratio": -1.0421,
+            "rad": 0.1682,
+            "nox": -15.9567,
+            "tax": -0.0116,
+            "zn": 0.0408
+          }
+        },
+        {
+          "k": 9,
+          "features": [
+            "lstat",
+            "dis",
+            "rm",
+            "ptratio",
+            "rad",
+            "nox",
+            "tax",
+            "zn",
+            "crim"
+          ],
+          "test_rmse": 5.94,
+          "test_r2": 0.5672,
+          "adjusted_r2": 0.5249,
+          "test_mae": 3.95,
+          "train_rmse": 4.48,
+          "train_r2": 0.7639,
+          "f_statistic": 13.4,
+          "p_value": "1.81e-13",
+          "intercept": 43.25,
+          "coefficients": {
+            "lstat": -0.5288,
+            "dis": -1.4519,
+            "rm": 3.6157,
+            "ptratio": -1.0505,
+            "rad": 0.2386,
+            "nox": -16.8556,
+            "tax": -0.0119,
+            "zn": 0.0451,
+            "crim": -0.1273
+          }
+        },
+        {
+          "k": 10,
+          "features": [
+            "lstat",
+            "dis",
+            "rm",
+            "ptratio",
+            "rad",
+            "nox",
+            "tax",
+            "zn",
+            "crim",
+            "b"
+          ],
+          "test_rmse": 5.85,
+          "test_r2": 0.5795,
+          "adjusted_r2": 0.5333,
+          "test_mae": 3.84,
+          "train_rmse": 4.43,
+          "train_r2": 0.769,
+          "f_statistic": 12.54,
+          "p_value": "2.02e-13",
+          "intercept": 38.39,
+          "coefficients": {
+            "lstat": -0.4961,
+            "dis": -1.4121,
+            "rm": 3.7471,
+            "ptratio": -1.0711,
+            "rad": 0.2606,
+            "nox": -16.1327,
+            "tax": -0.0116,
+            "zn": 0.0448,
+            "crim": -0.1254,
+            "b": 0.0087
+          }
+        },
+        {
+          "k": 11,
+          "features": [
+            "lstat",
+            "dis",
+            "rm",
+            "ptratio",
+            "rad",
+            "nox",
+            "tax",
+            "zn",
+            "crim",
+            "b",
+            "chas"
+          ],
+          "test_rmse": 5.78,
+          "test_r2": 0.5895,
+          "adjusted_r2": 0.5394,
+          "test_mae": 3.84,
+          "train_rmse": 4.4,
+          "train_r2": 0.773,
+          "f_statistic": 11.75,
+          "p_value": "2.70e-13",
+          "intercept": 38.16,
+          "coefficients": {
+            "lstat": -0.4966,
+            "dis": -1.3773,
+            "rm": 3.6855,
+            "ptratio": -1.0457,
+            "rad": 0.2432,
+            "nox": -16.2979,
+            "tax": -0.0108,
+            "zn": 0.0451,
+            "crim": -0.1193,
+            "b": 0.008,
+            "chas": 2.3428
+          }
+        },
+        {
+          "k": 12,
+          "features": [
+            "lstat",
+            "dis",
+            "rm",
+            "ptratio",
+            "rad",
+            "nox",
+            "tax",
+            "zn",
+            "crim",
+            "b",
+            "chas",
+            "age"
+          ],
+          "test_rmse": 5.78,
+          "test_r2": 0.5891,
+          "adjusted_r2": 0.5337,
+          "test_mae": 3.85,
+          "train_rmse": 4.4,
+          "train_r2": 0.773,
+          "f_statistic": 10.63,
+          "p_value": "1.00e-12",
+          "intercept": 38.06,
+          "coefficients": {
+            "lstat": -0.4924,
+            "dis": -1.3905,
+            "rm": 3.7051,
+            "ptratio": -1.0441,
+            "rad": 0.2423,
+            "nox": -16.0297,
+            "tax": -0.0108,
+            "zn": 0.0447,
+            "crim": -0.1196,
+            "b": 0.0081,
+            "chas": 2.3477,
+            "age": -0.0031
+          }
+        },
+        {
+          "k": 13,
+          "features": [
+            "lstat",
+            "dis",
+            "rm",
+            "ptratio",
+            "rad",
+            "nox",
+            "tax",
+            "zn",
+            "crim",
+            "b",
+            "chas",
+            "age",
+            "indus"
+          ],
+          "test_rmse": 5.78,
+          "test_r2": 0.5892,
+          "adjusted_r2": 0.5285,
+          "test_mae": 3.84,
+          "train_rmse": 4.4,
+          "train_r2": 0.773,
+          "f_statistic": 9.71,
+          "p_value": "3.33e-12",
+          "intercept": 38.09,
+          "coefficients": {
+            "lstat": -0.4928,
+            "dis": -1.3864,
+            "rm": 3.7087,
+            "ptratio": -1.0459,
+            "rad": 0.2442,
+            "nox": -16.1236,
+            "tax": -0.011,
+            "zn": 0.0448,
+            "crim": -0.1194,
+            "b": 0.0081,
+            "chas": 2.3408,
+            "age": -0.0031,
+            "indus": 0.0055
+          }
+        }
+      ],
+      "Exhaustive Search": [
+        {
+          "k": 1,
+          "features": [
+            "lstat"
+          ],
+          "test_rmse": 6.81,
+          "test_r2": 0.431,
+          "adjusted_r2": 0.4253,
+          "test_mae": 4.86,
+          "train_rmse": 6.04,
+          "train_r2": 0.571,
+          "f_statistic": 75.73,
+          "p_value": "6.82e-14",
+          "intercept": 34.77,
+          "coefficients": {
+            "lstat": -0.9565
+          }
+        },
+        {
+          "k": 2,
+          "features": [
+            "lstat",
+            "rm"
+          ],
+          "test_rmse": 6.11,
+          "test_r2": 0.5409,
+          "adjusted_r2": 0.5316,
+          "test_mae": 4.14,
+          "train_rmse": 5.37,
+          "train_r2": 0.6619,
+          "f_statistic": 58.32,
+          "p_value": "0.00e+00",
+          "intercept": -1.26,
+          "coefficients": {
+            "lstat": -0.6549,
+            "rm": 5.1091
+          }
+        },
+        {
+          "k": 3,
+          "features": [
+            "lstat",
+            "rm",
+            "ptratio"
+          ],
+          "test_rmse": 6.46,
+          "test_r2": 0.4882,
+          "adjusted_r2": 0.4725,
+          "test_mae": 4.4,
+          "train_rmse": 4.87,
+          "train_r2": 0.7219,
+          "f_statistic": 31.16,
+          "p_value": "3.14e-14",
+          "intercept": 24.03,
+          "coefficients": {
+            "lstat": -0.5755,
+            "rm": 4.2649,
+            "ptratio": -1.1365
+          }
+        },
+        {
+          "k": 4,
+          "features": [
+            "lstat",
+            "rm",
+            "ptratio",
+            "b"
+          ],
+          "test_rmse": 6.38,
+          "test_r2": 0.4996,
+          "adjusted_r2": 0.4789,
+          "test_mae": 4.22,
+          "train_rmse": 4.79,
+          "train_r2": 0.7303,
+          "f_statistic": 24.21,
+          "p_value": "6.62e-14",
+          "intercept": 17.49,
+          "coefficients": {
+            "lstat": -0.5124,
+            "rm": 4.5131,
+            "ptratio": -1.1151,
+            "b": 0.0105
+          }
+        },
+        {
+          "k": 5,
+          "features": [
+            "lstat",
+            "rm",
+            "ptratio",
+            "b",
+            "dis"
+          ],
+          "test_rmse": 6.13,
+          "test_r2": 0.5387,
+          "adjusted_r2": 0.5147,
+          "test_mae": 4.08,
+          "train_rmse": 4.73,
+          "train_r2": 0.7376,
+          "f_statistic": 22.42,
+          "p_value": "7.77e-15",
+          "intercept": 21.71,
+          "coefficients": {
+            "lstat": -0.5854,
+            "rm": 4.2775,
+            "ptratio": -1.1337,
+            "b": 0.0111,
+            "dis": -0.4478
+          }
+        },
+        {
+          "k": 6,
+          "features": [
+            "lstat",
+            "rm",
+            "ptratio",
+            "b",
+            "dis",
+            "nox"
+          ],
+          "test_rmse": 6.05,
+          "test_r2": 0.5498,
+          "adjusted_r2": 0.5213,
+          "test_mae": 4.04,
+          "train_rmse": 4.59,
+          "train_r2": 0.7522,
+          "f_statistic": 19.33,
+          "p_value": "1.30e-14",
+          "intercept": 35.07,
+          "coefficients": {
+            "lstat": -0.5259,
+            "rm": 4.1719,
+            "ptratio": -1.1768,
+            "b": 0.0083,
+            "dis": -1.0379,
+            "nox": -16.914
+          }
+        },
+        {
+          "k": 7,
+          "features": [
+            "lstat",
+            "rm",
+            "ptratio",
+            "b",
+            "dis",
+            "nox",
+            "chas"
+          ],
+          "test_rmse": 5.97,
+          "test_r2": 0.5619,
+          "adjusted_r2": 0.5293,
+          "test_mae": 4.04,
+          "train_rmse": 4.54,
+          "train_r2": 0.7576,
+          "f_statistic": 17.22,
+          "p_value": "1.75e-14",
+          "intercept": 35.11,
+          "coefficients": {
+            "lstat": -0.5243,
+            "rm": 4.0872,
+            "ptratio": -1.1504,
+            "b": 0.0076,
+            "dis": -0.9993,
+            "nox": -17.091,
+            "chas": 2.7165
+          }
+        },
+        {
+          "k": 8,
+          "features": [
+            "lstat",
+            "rm",
+            "ptratio",
+            "b",
+            "dis",
+            "nox",
+            "chas",
+            "zn"
+          ],
+          "test_rmse": 5.92,
+          "test_r2": 0.5698,
+          "adjusted_r2": 0.5328,
+          "test_mae": 3.98,
+          "train_rmse": 4.51,
+          "train_r2": 0.7612,
+          "f_statistic": 15.4,
+          "p_value": "3.40e-14",
+          "intercept": 35.3,
+          "coefficients": {
+            "lstat": -0.5322,
+            "rm": 3.8743,
+            "ptratio": -1.0633,
+            "b": 0.0079,
+            "dis": -1.2362,
+            "nox": -17.0469,
+            "chas": 2.7777,
+            "zn": 0.0342
+          }
+        },
+        {
+          "k": 9,
+          "features": [
+            "lstat",
+            "rm",
+            "ptratio",
+            "b",
+            "dis",
+            "nox",
+            "chas",
+            "zn",
+            "crim"
+          ],
+          "test_rmse": 5.96,
+          "test_r2": 0.564,
+          "adjusted_r2": 0.5214,
+          "test_mae": 3.96,
+          "train_rmse": 4.47,
+          "train_r2": 0.765,
+          "f_statistic": 13.23,
+          "p_value": "2.49e-13",
+          "intercept": 33.26,
+          "coefficients": {
+            "lstat": -0.5037,
+            "rm": 3.9809,
+            "ptratio": -1.0046,
+            "b": 0.007,
+            "dis": -1.2837,
+            "nox": -15.8924,
+            "chas": 2.6811,
+            "zn": 0.0394,
+            "crim": -0.0842
+          }
+        },
+        {
+          "k": 10,
+          "features": [
+            "lstat",
+            "rm",
+            "ptratio",
+            "b",
+            "dis",
+            "nox",
+            "chas",
+            "zn",
+            "crim",
+            "rad"
+          ],
+          "test_rmse": 5.85,
+          "test_r2": 0.5791,
+          "adjusted_r2": 0.5328,
+          "test_mae": 3.95,
+          "train_rmse": 4.45,
+          "train_r2": 0.7673,
+          "f_statistic": 12.52,
+          "p_value": "2.10e-13",
+          "intercept": 36.72,
+          "coefficients": {
+            "lstat": -0.501,
+            "rm": 3.8715,
+            "ptratio": -1.1174,
+            "b": 0.0083,
+            "dis": -1.2964,
+            "nox": -19.1022,
+            "chas": 2.5828,
+            "zn": 0.0362,
+            "crim": -0.1154,
+            "rad": 0.0867
+          }
+        },
+        {
+          "k": 11,
+          "features": [
+            "lstat",
+            "rm",
+            "ptratio",
+            "b",
+            "dis",
+            "nox",
+            "chas",
+            "zn",
+            "crim",
+            "rad",
+            "tax"
+          ],
+          "test_rmse": 5.78,
+          "test_r2": 0.5895,
+          "adjusted_r2": 0.5394,
+          "test_mae": 3.84,
+          "train_rmse": 4.4,
+          "train_r2": 0.773,
+          "f_statistic": 11.75,
+          "p_value": "2.70e-13",
+          "intercept": 38.16,
+          "coefficients": {
+            "lstat": -0.4966,
+            "rm": 3.6855,
+            "ptratio": -1.0457,
+            "b": 0.008,
+            "dis": -1.3773,
+            "nox": -16.2979,
+            "chas": 2.3428,
+            "zn": 0.0451,
+            "crim": -0.1193,
+            "rad": 0.2432,
+            "tax": -0.0108
+          }
+        },
+        {
+          "k": 12,
+          "features": [
+            "lstat",
+            "rm",
+            "ptratio",
+            "b",
+            "dis",
+            "nox",
+            "chas",
+            "zn",
+            "crim",
+            "rad",
+            "tax",
+            "age"
+          ],
+          "test_rmse": 5.78,
+          "test_r2": 0.5891,
+          "adjusted_r2": 0.5337,
+          "test_mae": 3.85,
+          "train_rmse": 4.4,
+          "train_r2": 0.773,
+          "f_statistic": 10.63,
+          "p_value": "1.00e-12",
+          "intercept": 38.06,
+          "coefficients": {
+            "lstat": -0.4924,
+            "rm": 3.7051,
+            "ptratio": -1.0441,
+            "b": 0.0081,
+            "dis": -1.3905,
+            "nox": -16.0297,
+            "chas": 2.3477,
+            "zn": 0.0447,
+            "crim": -0.1196,
+            "rad": 0.2423,
+            "tax": -0.0108,
+            "age": -0.0031
+          }
+        },
+        {
+          "k": 13,
+          "features": [
+            "lstat",
+            "rm",
+            "ptratio",
+            "b",
+            "dis",
+            "nox",
+            "chas",
+            "zn",
+            "crim",
+            "rad",
+            "tax",
+            "age",
+            "indus"
+          ],
+          "test_rmse": 5.78,
+          "test_r2": 0.5892,
+          "adjusted_r2": 0.5285,
+          "test_mae": 3.84,
+          "train_rmse": 4.4,
+          "train_r2": 0.773,
+          "f_statistic": 9.71,
+          "p_value": "3.33e-12",
+          "intercept": 38.09,
+          "coefficients": {
+            "lstat": -0.4928,
+            "rm": 3.7087,
+            "ptratio": -1.0459,
+            "b": 0.0081,
+            "dis": -1.3864,
+            "nox": -16.1236,
+            "chas": 2.3408,
+            "zn": 0.0448,
+            "crim": -0.1194,
+            "rad": 0.2442,
+            "tax": -0.011,
+            "age": -0.0031,
+            "indus": 0.0055
+          }
+        }
+      ]
+    }
+  }
+}
